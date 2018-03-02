@@ -1,5 +1,5 @@
 # SmartcardSDK for .Net
-Smartcard communication and rendering library
+RPL Smartcard communication and rendering library
 
 Version History:
 
