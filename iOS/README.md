@@ -8,6 +8,18 @@
 ### Manually
 1. download and update the release file SmartcardSDK.ios.zip
 2. select your project target, add SmartcardSDK.framework as an embedded binary
+3. add dependency library [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) by adding SwiftyJSON.swift to the project tree
 
 ## Usage
-`import SmartcardSDK`
+```swift
+import SmartcardSDK
+
+let initParams = InitParams(apiKey: apiKey,
+                            appIdentifierName: appIdentifierName,
+                            appVersion: appVersion,
+                            appFriendlyName: appFriendlyName)
+SmartcardClient.shared.initClient(initParams: initParams, configOptions: [:]) {
+    result in
+    ...
+}
+```
