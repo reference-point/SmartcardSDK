@@ -2,7 +2,8 @@
 
 ## Requirements
 * iOS 9.0+
-* Xcode 9
+* Swift 4+
+* Xcode 9+
 
 ## Integration
 ### Manually
