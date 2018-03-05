@@ -19,7 +19,7 @@ let initParams = InitParams(apiKey: apiKey,
                             appIdentifierName: appIdentifierName,
                             appVersion: appVersion,
                             appFriendlyName: appFriendlyName)
-SmartcardClient.shared.initClient(initParams: initParams, configOptions: [:]) {
+SmartcardClient.shared.initClient(initParams: initParams) {
     result in
     ...
 }
