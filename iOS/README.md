@@ -7,7 +7,7 @@
 
 ## Integration
 ### Manually
-1. download and update the release file SmartcardSDK.ios.zip
+1. download and unzip the release file SmartcardSDK.ios.zip
 2. select your project target, add SmartcardSDK.framework as an embedded binary
 3. add dependency library [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) by adding SwiftyJSON.swift to the project tree
 
