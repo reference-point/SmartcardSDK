@@ -6,6 +6,17 @@
 * Xcode 9+
 
 ## Integration
+### CocoaPods
+You can use [CocoaPods](http://cocoapods.org/) to install `SmartcardSDK` by adding it to your `Podfile`:
+```
+platform :ios, '9.0'
+
+target 'YourApp' do
+    use_frameworks!
+    pod 'SmartcardSDK'
+end
+```
+
 ### Manually
 1. download and unzip the release file SmartcardSDK.ios.zip
 2. select your project target, add SmartcardSDK.framework as an embedded binary
