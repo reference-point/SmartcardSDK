@@ -1,7 +1,7 @@
 # Release notes
 
 ## 2.0.3
-13/04/18: Fixed a timing issue in generating TOTP number
+13/04/18: Fixed a timing issue in generating TOTP number. Release is built on Xcode 9.3 with Swift 4.1
 
 ## 2.0.2
 09/04/18: Add new property of "isHidden" in Scheme and optimised scheme download porcessses
