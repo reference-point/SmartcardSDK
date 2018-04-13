@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.0.3
+13/04/18: Fixed a timing issue in generating TOTP number
+
 ## 2.0.2
 09/04/18: Add new property of "isHidden" in Scheme and optimised scheme download porcessses
 
