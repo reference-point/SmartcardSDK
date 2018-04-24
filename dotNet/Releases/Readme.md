@@ -8,3 +8,5 @@ Version History:
 23/03/18 : Version upgrade to 2.0.0
 
 05/04/18 : Version upgrade to 2.0.1. Fix to prevent hidden/test schemes being shown in GetSchemeList.
+
+24/04/18 : Version upgrade to 2.0.2. Card rendering bug fixes, richer error information regarding card sync problems.
