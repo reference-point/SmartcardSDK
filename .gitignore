@@ -1,0 +1,16 @@
+
+## Ignore Visual Studio temporary files
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .Net test app build results
+dotNet/Samples/SDKTestApp/packages/
+dotNet/Samples/SDKTestApp/.vs/
+dotNet/Samples/SDKTestApp/SDKTestApp/bin/
+dotNet/Samples/SDKTestApp/SDKTestApp/obj/
+
+
