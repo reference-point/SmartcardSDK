@@ -37,7 +37,6 @@ namespace SDKTestApp
             //Initialise the SDK
             //
             Context sdkContext = new Context(TEMP_ROOT);
-
             InitParams initParams = new InitParams
             {
                 ApiKey = APIKEY,
@@ -97,7 +96,9 @@ namespace SDKTestApp
                     Debug.WriteLine($"Read successful : SchemeId = {scReadResult.Result.CardData.Scheme.Identifier}");
 
                     Debug.WriteLine($"Parsing card data...");
-                    Dictionary<string, string> cardDataVals = ParseCSCSCardData(scReadResult.Result.CardData);
+
+                    //Parse the card data - CSCS fromat is assumed here. Other card schemes may required methods of parsing 
+                    Dictionary<string, string> cardDataVals = CSCSMetadata.ParseCardData(scReadResult.Result.CardData);
 
                     foreach (KeyValuePair<string, string> keyVal in cardDataVals)
                     {
@@ -141,100 +142,6 @@ namespace SDKTestApp
             else
             {
                 Debug.WriteLine($"*** No cards found ***");
-            }
-        }
-
-
-        /// <summary>
-        /// Build up the dictionary of data elements required for a card render
-        /// </summary>
-        /// <param name="cardData"></param>
-        /// <returns></returns>
-        private static Dictionary<string, string> ParseCSCSCardData(CardData cardData)
-        {
-            Dictionary<string, string> renderData = new Dictionary<string, string>();
-
-            //
-            //Extract card photo data block 
-            //
-            renderData.Add("photo", cardData.Scheme.DataBlocks.First(d => d.Type.Equals("image/jpeg")).Data);
-
-            //
-            //Extract CSCS card datablock. This has a pseudo-XML structure. 
-            //
-            byte[] cardDataBytes = Convert.FromBase64String(cardData.Scheme.DataBlocks.First(d => d.Type.Equals("text/sml")).Data);
-            string cardXML = System.Text.Encoding.ASCII.GetString(cardDataBytes);
-
-            //string regNo = GetXMLTagValue(cardXML, "RegNo");
-            string title = GetXMLTagValue(cardXML, "Title");
-            string initial = GetXMLTagValue(cardXML, "Initial");
-            string surname = GetXMLTagValue(cardXML, "Surname");
-            string firstname = GetXMLTagValue(cardXML, "Firstname");
-            string logoID = GetXMLTagValue(cardXML, "LogoID");
-            string expiryDateStr = GetXMLTagValue(cardXML, "ExpiryDate");
-
-            // try two possible date formats for expiry date
-            DateTime expiryDate = DateTime.MinValue;
-            bool expiryDateParsed = DateTime.TryParseExact(expiryDateStr, "MMM yyyy", null, DateTimeStyles.None, out expiryDate);
-            DateTime? displayExpiryDate = null;
-
-            if (!expiryDateParsed)
-            {
-                expiryDateParsed = DateTime.TryParseExact(expiryDateStr, "MMMM yyyy", null, DateTimeStyles.None,
-                    out expiryDate);
-            }
-
-            if (expiryDateParsed)
-            {
-                displayExpiryDate = new DateTime(expiryDate.Year, expiryDate.Month, 1).AddMonths(1).AddDays(-1);
-            }
-            
-            string printDateStr = GetXMLTagValue(cardXML, "PrintDate");
-
-            renderData.Add("printdate", printDateStr);
-            renderData.Add("top", GetXMLTagValue(cardXML, "Top"));
-            renderData.Add("fullname",
-                ((!string.IsNullOrEmpty(title) ? title.ToUpper() + " " : "") +
-                 (!string.IsNullOrEmpty(initial) ? initial.ToUpper() + " " : "") +
-                 (!string.IsNullOrEmpty(surname) ? surname.ToUpper() + " " : "")).Trim());
-            renderData.Add("initialsurname",
-                ((!string.IsNullOrEmpty(initial) ? initial.ToUpper() + " " : "") +
-                 (!string.IsNullOrEmpty(surname) ? surname.ToUpper() + " " : "")).Trim());
-            renderData.Add("firstnamesurname",
-                ((!string.IsNullOrEmpty(firstname) ? firstname.ToUpper() + " " : "") +
-                 (!string.IsNullOrEmpty(surname) ? surname.ToUpper() + " " : "")).Trim());
-            renderData.Add("regno", GetXMLTagValue(cardXML, "RegNo"));
-            renderData.Add("colour", GetXMLTagValue(cardXML, "Colour"));
-            renderData.Add("bottom", GetXMLTagValue(cardXML, "Bottom"));
-            renderData.Add("expirydatemonthyear", displayExpiryDate?.ToString("MMM yyyy") ?? expiryDateStr);
-            renderData.Add("expirydatemonthyearfull", displayExpiryDate?.ToString("MMMM yyyy") ?? expiryDateStr);
-
-            renderData.Add("scheme", GetXMLTagValue(cardXML, "Scheme"));
-
-            return renderData;
-        }
-
-        private static string GetXMLTagValue(string xml, string tag, bool genericCloseTag = true)
-        {
-            try
-            {
-                var openingTag = "<" + tag + ">";
-                var closingTag = genericCloseTag ? "</>" : "</" + tag + ">";
-
-                if (xml.IndexOf(openingTag) == -1)
-                {
-                    return "";
-                }
-
-                return xml.Substring(
-                    xml.IndexOf(openingTag) + openingTag.Length,
-                    xml.IndexOf(closingTag, xml.IndexOf(openingTag) + openingTag.Length) -
-                    (xml.IndexOf(openingTag) + openingTag.Length
-                    ));
-            }
-            catch (Exception)
-            {
-                return null;
             }
         }
     }
