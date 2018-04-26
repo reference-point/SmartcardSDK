@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.0.4
+26/04/18: Fixed a problem of adding a new Seckey under iOS 9, set web request timeout to 30 seconds
+
 ## 2.0.3
 13/04/18: Fixed a timing issue in generating TOTP number. Release is built on Xcode 9.3 with Swift 4.1
 
