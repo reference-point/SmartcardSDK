@@ -12,3 +12,5 @@ Version History:
 24/04/18 : Version upgrade to 2.0.2. Card rendering bug fixes, richer error information regarding card sync problems.
 
 26/04/18 : Version upgrade to 2.0.3. Fixed NFC card reading issue with contact readers.
+
+11/05/18 : Version upgrade to 2.0.4. Enhanced QR v1 scheme support. Fix for integration support numbers.
