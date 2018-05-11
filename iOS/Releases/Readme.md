@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.0.5
+11/05/18: Add support for MiM card
+
 ## 2.0.4
 26/04/18: Fixed a problem of adding a new Seckey under iOS 9, set web request timeout to 30 seconds
 
