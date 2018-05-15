@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.0.6
+15/05/18: Fixed a problem of UInt8 data overflow.
+
 ## 2.0.5
 11/05/18: Add support for MiM card
 
