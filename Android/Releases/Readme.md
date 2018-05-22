@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.0.3
+24/04/18 : Fix to NFC reading + MiM scheme added for v1 QR support
+
 ## 2.0.2
 24/04/18 : Minor bug fixes
 
