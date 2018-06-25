@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.0.4
+25/06/18 : Fix to add support for reading cards using NFC on LG and HTC devices
+
 ## 2.0.3
 24/04/18 : Fix to NFC reading + MiM scheme added for v1 QR support
 
