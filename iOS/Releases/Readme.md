@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.07
+02/07/18: Stop multiple callbacks when a QR code is invalid
+
 ## 2.0.6
 15/05/18: Fixed a problem of UInt8 data overflow.
 
