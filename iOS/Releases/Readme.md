@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.0.8
+11/07/18: Make `cardReadDateTime` in `CardReadInfo` optional
+
 ## 2.07
 02/07/18: Stop multiple callbacks when a QR code is invalid
 
