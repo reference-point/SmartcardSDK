@@ -1,5 +1,8 @@
 # Release notes
 
+## 2.0.9
+01/10/18: Minor fix to RenderEngine, add `getScheme()` method 
+
 ## 2.0.8
 11/07/18: Make `cardReadDateTime` in `CardReadInfo` optional
 
