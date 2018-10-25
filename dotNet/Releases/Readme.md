@@ -17,4 +17,8 @@ Version History:
 
 11/05/18 : Version upgrade to 2.0.4. Enhanced QR v1 scheme support. Fix for integration support numbers.
 
+22/07/18 :Version upgrade to 2.0.5.  Fixed card rendering bug and error responses after proxy authentication failures
+
+17/09/18 :Version upgrade to 2.0.6.  Bug fixes.
+
 25/10/18 : Version upgrade to 2.0.7. Internal bug fixes and card render text alignment updates.
