@@ -1,5 +1,7 @@
 # SmartcardSDK for .Net
-RPL Smartcard communication and rendering library
+## RPL Smartcard communication and rendering library
+
+**LATEST VERSION OF RPL.SmartcardSDK PACKAGE IS AVAILABLE ON www.nuget.org**
 
 Version History:
 
@@ -14,3 +16,5 @@ Version History:
 26/04/18 : Version upgrade to 2.0.3. Fixed NFC card reading issue with contact readers.
 
 11/05/18 : Version upgrade to 2.0.4. Enhanced QR v1 scheme support. Fix for integration support numbers.
+
+25/10/18 : Version upgrade to 2.0.7. Internal bug fixes and card render text alignment updates.
