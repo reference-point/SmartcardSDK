@@ -14,3 +14,23 @@
 
 ## 2.0.0
 23/03/18 : First release of SDK
+
+# Usage
+        SmartcardClient.init(getApplicationContext(),
+                new ISmartcardClientEventHandler<InitTaskResult>() {
+                    @Override
+                    public void onProgressUpdate(String progressMsg) {
+                        addProgress(progressMsg);
+                    }
+                    @Override
+                    public void onPostExecute(SmartcardClientResult<InitTaskResult> result) {
+                        if (result.isSuccess()) {
+                            addProgress("Initialisation returned success!");
+                        } else {
+                            // Initialisation failed
+                            SmartcardClientError e = result.getError();
+                            addProgress(e != null ? e.getFullErrorMessage() : "No error info available!");
+                        }
+                    }
+                },
+                new InitTaskParams("my-api-key", "my-app-name", "my-app-version", "SDK Test App"), null);
