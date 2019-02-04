@@ -16,6 +16,9 @@
 23/03/18 : First release of SDK
 
 # Usage
+
+## Initialise the SDK
+
         SmartcardClient.init(getApplicationContext(),
                 new ISmartcardClientEventHandler<InitTaskResult>() {
                     @Override
@@ -34,3 +37,19 @@
                     }
                 },
                 new InitTaskParams("my-api-key", "my-app-name", "my-app-version", "SDK Test App"), null);
+
+## Read a card using NFC
+
+        SmartcardClient.readCard(getApplicationContext(), new ISmartcardClientEventHandler() {
+            @Override
+            public void onProgressUpdate(String progressMsg) {
+                addProgress(progressMsg);
+            }
+
+            @Override
+            public void onPostExecute(SmartcardClientResult result) {
+                Log.d(TAG, "SDK read card response received.");
+                handleReadCardResponse(result, sync);
+            }
+        }, intent, enumSyncOption.SYNC);
+
