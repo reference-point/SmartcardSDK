@@ -50,7 +50,10 @@
             @Override
             public void onPostExecute(SmartcardClientResult result) {
                 Log.d(TAG, "SDK read card response received.");
-                handleReadCardResponse(result, sync);
+                if (result.isSuccess())
+                    processCardData(result.getResult().getCardData());
+                else
+                    handleReadError(result.getError().getFullErrorMessage());
             }
         }, intent, enumSyncOption.SYNC);
 
