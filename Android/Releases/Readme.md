@@ -53,7 +53,7 @@
                 if (result.isSuccess())
                     processCardData(result.getResult().getCardData());
                 else
-                    handleReadError(result.getError().getFullErrorMessage());
+                    addProgress(result.getError().getFullErrorMessage());
             }
         }, intent, enumSyncOption.SYNC);
 
@@ -73,7 +73,7 @@
                 if (result.isSuccess()) {
                     ReadCardByQRCodeTaskResult qrResult = result.getResult();
                     if (qrResult.qrCodeReadResult == enumQRCodeReadResult.SUCCESS) {
-                        CardData cardData = result.getResult().cardData;
+                        processCardData(result.getResult().getCardData());
                     } else if (qrResult.qrCodeReadResult == enumQRCodeReadResult.OFFLINE) {
                         // save the qr code so it can be processed when device comes back online
                         cachedQRCode = qrResult.qrCodeString;
@@ -82,8 +82,7 @@
                     else
                         addProgress("QR code read FAILED. Reason: [" + qrResult.failureMessage + "].");
                 } else {
-                    SmartcardClientError e = result.getError();
-                    String msg = e.getFullErrorMessage();
+                    addProgress(result.getError().getFullErrorMessage());
                 }
             }
         }, params);
