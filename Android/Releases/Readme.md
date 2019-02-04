@@ -40,6 +40,7 @@
 
 ## Read a card using NFC
 
+        // uses the NFC Intent object returned by the OS...
         SmartcardClient.readCard(getApplicationContext(), new ISmartcardClientEventHandler() {
             @Override
             public void onProgressUpdate(String progressMsg) {
@@ -52,4 +53,22 @@
                 handleReadCardResponse(result, sync);
             }
         }, intent, enumSyncOption.SYNC);
+
+## Read a card using QRCode
+
+        // First read a QR code using the device's camera - set qrCodeData to the QR code data
+        CardReadInfo cri = new CardReadInfo(new Date(), "Site hut 22", "London", 0, 0, null);
+        ReadCardByQRCodeTaskParams params = new ReadCardByQRCodeTaskParams(qrCodeData, cri);
+        SmartcardClient.readCardByQRCode(getApplicationContext(), new ISmartcardClientEventHandler<ReadCardByQRCodeTaskResult>() {
+            @Override
+            public void onProgressUpdate(String progressMsg) {
+                addProgress(progressMsg);
+            }
+
+            @Override
+            public void onPostExecute(SmartcardClientResult<ReadCardByQRCodeTaskResult> result) {
+                handleQRCodeReadResponse(result);
+                progressBar.setVisibility(View.GONE);
+            }
+        }, params);
 
