@@ -67,24 +67,24 @@
 
             @Override
             public void onPostExecute(SmartcardClientResult<ReadCardByQRCodeTaskResult> result) {
-        if (result.isSuccess()) {
-            ReadCardByQRCodeTaskResult qrResult = result.getResult();
-            if (qrResult.qrCodeReadResult == enumQRCodeReadResult.SUCCESS) {
-                CardData cardData = result.getResult().cardData;
-                renderCard(cardData);
-            } else if (qrResult.qrCodeReadResult == enumQRCodeReadResult.OFFLINE) {
-                // save the qr code so it can be processed when device comes back online
-                cachedQRCode = qrResult.qrCodeString;
-            } else if (qrResult.qrCodeReadResult == enumQRCodeReadResult.SERVER_REJECTED)
-                addProgress("QR code was rejected. Reason: [" + qrResult.serverRejectionReasonMessage + "]." + (qrResult.failureMessage != null ? qrResult.failureMessage : ""));
-            else
-                addProgress("QR code read FAILED. Reason: [" + qrResult.failureMessage + "].");
-        } else {
-            String msg = "QR read failed - ";
-            SmartcardClientError e = result.getError();
-            if (e != null) {
-                msg = e.getFullErrorMessage();
-            }
+                if (result.isSuccess()) {
+                    ReadCardByQRCodeTaskResult qrResult = result.getResult();
+                    if (qrResult.qrCodeReadResult == enumQRCodeReadResult.SUCCESS) {
+                        CardData cardData = result.getResult().cardData;
+                        renderCard(cardData);
+                    } else if (qrResult.qrCodeReadResult == enumQRCodeReadResult.OFFLINE) {
+                        // save the qr code so it can be processed when device comes back online
+                        cachedQRCode = qrResult.qrCodeString;
+                    } else if (qrResult.qrCodeReadResult == enumQRCodeReadResult.SERVER_REJECTED)
+                        addProgress("QR code was rejected. Reason: [" + qrResult.serverRejectionReasonMessage + "]." + (qrResult.failureMessage != null ? qrResult.failureMessage : ""));
+                    else
+                        addProgress("QR code read FAILED. Reason: [" + qrResult.failureMessage + "].");
+                } else {
+                    String msg = "QR read failed - ";
+                    SmartcardClientError e = result.getError();
+                    if (e != null) {
+                        msg = e.getFullErrorMessage();
+                    }
         }
 
 
