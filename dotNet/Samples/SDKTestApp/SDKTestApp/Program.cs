@@ -21,11 +21,16 @@ namespace SDKTestApp
             string TEMP_ROOT = "c:\\temp\\SDK";
             string TEMP_FOLDER = $"{TEMP_ROOT}\\TestData";
 
-            string APIKEY = "YOUR APIKEY GOES HERE";
-            string APPID = "YOUR APPID GOES HERE";
+            //string APIKEY = "nfVKkOigXUs+2cP/I9MIhXPqxva85zLAlGoXKVcozZI=";
+            //string APPID = "assettagz-pc";
+            //string APPVER = "1.0.0";
+            //string APPFRIENDLY = "My card reader";
+            string APIKEY = "bw9tbZbJz4oT+lOOVus2kOEAHhOsvLn5v2pEw3e3X8s=";
+            string APPID = "assettagz-android";
             string APPVER = "1.0.0";
             string APPFRIENDLY = "My card reader";
-            
+
+
             // --- TODO SET THESE VALUES TO SUIT YOUR OWN ENVIRONMENT AND SDK CONFIGURATION
 
             if (!Directory.Exists(TEMP_FOLDER))
