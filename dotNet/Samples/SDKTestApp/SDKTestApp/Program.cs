@@ -21,12 +21,8 @@ namespace SDKTestApp
             string TEMP_ROOT = "c:\\temp\\SDK";
             string TEMP_FOLDER = $"{TEMP_ROOT}\\TestData";
 
-            //string APIKEY = "nfVKkOigXUs+2cP/I9MIhXPqxva85zLAlGoXKVcozZI=";
-            //string APPID = "assettagz-pc";
-            //string APPVER = "1.0.0";
-            //string APPFRIENDLY = "My card reader";
-            string APIKEY = "bw9tbZbJz4oT+lOOVus2kOEAHhOsvLn5v2pEw3e3X8s=";
-            string APPID = "assettagz-android";
+            string APIKEY = "my_api_key";
+            string APPID = "my_app_id";
             string APPVER = "1.0.0";
             string APPFRIENDLY = "My card reader";
 
@@ -50,7 +46,12 @@ namespace SDKTestApp
                 AppFriendlyName = APPFRIENDLY
             };
 
-            SmartcardClientResult<InitResult> initResult = await SmartcardClient.Init(sdkContext, initParams, (x) => { Debug.WriteLine(x.Status); });
+            Dictionary<string, string> configOptions = new Dictionary<string, string>();
+            //This is optional but gives more feedback during development
+            //configOptions.Add("debug-mode", "true");
+
+
+            SmartcardClientResult<InitResult> initResult = await SmartcardClient.Init(sdkContext, initParams, (x) => { Debug.WriteLine(x.Status); }, configOptions);
 
             if (!initResult.Success)
             {
