@@ -48,7 +48,7 @@ namespace SDKTestApp
 
             Dictionary<string, string> configOptions = new Dictionary<string, string>();
             //This is optional but gives more feedback during development
-            //configOptions.Add("debug-mode", "true");
+            configOptions.Add("debug-mode", "true");
 
 
             SmartcardClientResult<InitResult> initResult = await SmartcardClient.Init(sdkContext, initParams, (x) => { Debug.WriteLine(x.Status); }, configOptions);
