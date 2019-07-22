@@ -17,6 +17,23 @@
 
 # Usage
 
+## Add the following dependencies to your gradle file
+
+    // SDK dependency (third-party)
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.jakewharton.timber:timber:4.6.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.apache.commons:commons-lang3:3.4'
+
+    // SDK dependency (.aar SDK library files - see project libs folder)
+    implementation(name: 'smartcardsdk', ext: 'aar')
+    implementation(name: 'smartcardsdk-metadata-cscs', ext: 'aar')
+    implementation(name: 'smartcardsdk-common', ext: 'aar')
+    implementation(name: 'smartcardsdk-render', ext: 'aar')
+
+
 ## Initialise the SDK
 
         SmartcardClient.init(getApplicationContext(),
