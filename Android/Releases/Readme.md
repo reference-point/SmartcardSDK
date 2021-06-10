@@ -1,5 +1,12 @@
 # Release notes
 
+## 2.3.3
+10/06/21 :  Added offline read support for upcoming CSCS card stock
+			Added manual card search support.
+
+## 2.2.0 - 2.3.2
+Internal releases
+
 ## 2.1.0
 17/12/19 : Added support for static QR code reading
 
