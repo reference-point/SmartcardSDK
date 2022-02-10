@@ -1,5 +1,10 @@
 # Release notes
 
+## 2.4.0
+10/02/22 : Support for new card types 
+           Date parsing fix for Android 12
+           Bug fixes
+
 ## 2.3.3
 10/06/21 :  Added offline read support for upcoming CSCS card stock
 			Added manual card search support.
